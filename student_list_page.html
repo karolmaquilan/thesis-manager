@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title></title>
+</head>
+<style>
+
+a:link {
+    color: blue;
+    text-decoration: none;			
+}
+
+/* visited link */
+a:visited {
+    color: #2F4F4F;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: #2F4F4F;
+    text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+    text-decoration: underline;
+}
+h1{
+	font-size: 40px;
+	text-align: center;
+}
+	body {
+    background-color: #b0c4de;
+}
+</style>
+<body>
+ <h1>Student List</h1>
+    <ul>
+    {% for student in student_list %}
+        <li>{{student.first_name}} {{student.last_name}}	{{student.age}} yrs.old <a href='/student/edit/{{student.key.id()}}'>edit</a> &nbsp <a href='/student/delete/{{student.key.id()}}'>delete</a></li>
+    {% endfor %}
+	</ul>
+<a href='/home'>back to homepage</a>
+</body>
+</html>
