@@ -37,7 +37,7 @@ h1{
 }
 </style>
 <body>
- <h1>Student List</h1>
+ <h1>Students List</h1>
     <ul>
     {% for student in student_list %}
         <li>{{student.first_name}} {{student.last_name}}	{{student.age}} yrs.old <a href='/student/edit/{{student.key.id()}}'>edit</a> &nbsp <a href='/student/delete/{{student.key.id()}}'>delete</a></li>
