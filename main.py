@@ -78,18 +78,28 @@ class EditPage(webapp2.RequestHandler):
         self.redirect('/success')
 
 class DeletePage(webapp2.RequestHandler):
-    def get(self,s_id):
-        b = Student.get_by_id(int(s_id))
+    def get(self, dd):
+        b = Student.get_by_id(int(dd))
         b.key.delete()
         self.redirect('/success')
+class StudentPage(webapp2.RequestHandler):
+   def get(self, ee):
+        d = Student.get_by_id(int(ee))
+        template_data = {
+            'student_page' : d
+        }
+        template = JINJA_ENVIRONMENT.get_template('student_page.html')
+        self.response.write(template.render(template_data))
+
 app = webapp2.WSGIApplication([
     ('/student/create', CreateStudentPage),
     ('/student/list', StudentListPage),
+    ('/student/list/student_page/(.*)',StudentPage),
     ('/about', AboutPage),
     ('/success', SuccessPage),
     ('/home', MainPage),
-    ('/student/edit/(.*)', EditPage),
-    ('/student/delete/(.*)', DeletePage),
+    ('/student/list/edit/(.*)', EditPage),
+    ('/student/list/delete/(.*)', DeletePage),
     ('/', MainPage)
 
 ], debug=True)

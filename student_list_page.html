@@ -40,7 +40,9 @@ h1{
  <h1>Students List</h1>
     <ul>
     {% for student in student_list %}
-        <li>{{student.first_name}} {{student.last_name}}	{{student.age}} yrs.old <a href='/student/edit/{{student.key.id()}}'>edit</a> &nbsp <a href='/student/delete/{{student.key.id()}}'>delete</a></li>
+        <li>{{student.first_name}} {{student.last_name}} <a href='/student/list/student_page/{{student.key.id()}}'>view details</a>
+            
+        </li>
     {% endfor %}
 	</ul>
 <a href='/home'>back to homepage</a>
